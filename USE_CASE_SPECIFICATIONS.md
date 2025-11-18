@@ -319,26 +319,311 @@ Tài liệu mô tả chi tiết luồng xử lý cho từng Use Case
 | **Nhóm chức năng** | **Số lượng Use Cases** | **Use Case IDs** |
 |-------------------|----------------------|------------------|
 | Authentication | 3 | UC1, UC2, UC3 |
-| Product Management | 5 | UC4, UC5, UC6, UC11 |
-| Cart Management | 3 | UC14, UC15, UC16 |
-| Order Management | 4 | UC19, UC20, UC22, UC24 |
-| Review Management | 2 | UC27, UC28 |
-| Category Management | 1 | UC31 |
+| Product Management | 10 | UC4, UC5, UC6, UC7, UC8, UC9, UC10, UC11, UC12, UC13 |
+| Cart Management | 5 | UC14, UC15, UC16, UC17, UC18 |
+| Order Management | 7 | UC19, UC20, UC21, UC22, UC23, UC24, UC25 |
+| Review Management | 4 | UC26, UC27, UC28, UC29 |
+| Category Management | 4 | UC30, UC31, UC32, UC33 |
 | Notification System | 3 | UC34, UC35, UC36 |
-| **TỔNG** | **21** | **21/36 Use Cases** |
+| **TỔNG** | **36** | **36/36 Use Cases** ✅ |
+
+---
+
+## � Quản lý Sản phẩm (Tiếp theo)
+
+### UC7: Lọc sản phẩm theo màu sắc
+
+| **Use case name** | Lọc sản phẩm theo màu sắc |
+|-------------------|--------------------------|
+| **Actors** | Khách hàng, Quản trị viên |
+| **Flow** | **1. Chọn màu sắc trong bộ lọc**<br>**2. Hệ thống tìm kiếm sản phẩm**<br>2.1 Truy vấn products WHERE color = selected_color<br>2.2 Load thông tin category và rating<br>2.3 Sắp xếp kết quả<br>**3. Hiển thị danh sách sản phẩm** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Không có sản phẩm với màu đó**<br>Bước: 2, 2.1 | Không có sản phẩm nào có màu được chọn<br>→ Trả về danh sách rỗng |
+| **Kịch bản 2: Có sản phẩm**<br>Bước: 1, 2.1, 2.2, 2.3, 3 | Tìm thấy sản phẩm với màu phù hợp<br>→ Hiển thị danh sách sản phẩm |
+
+---
+
+### UC8: Lọc sản phẩm theo dung lượng
+
+| **Use case name** | Lọc sản phẩm theo dung lượng |
+|-------------------|------------------------------|
+| **Actors** | Khách hàng |
+| **Flow** | **1. Chọn dung lượng (128GB, 256GB, 512GB, 1TB)**<br>**2. Hệ thống tìm kiếm**<br>2.1 Truy vấn products WHERE storage = selected_storage<br>2.2 Load thông tin chi tiết<br>2.3 Sắp xếp theo giá hoặc tên<br>**3. Hiển thị kết quả** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Không có sản phẩm**<br>Bước: 2, 2.1 | Không có sản phẩm với dung lượng đó<br>→ Trả về danh sách rỗng |
+| **Kịch bản 2: Tìm thấy sản phẩm**<br>Bước: 1, 2.1, 2.2, 2.3, 3 | Có sản phẩm với dung lượng được chọn<br>→ Hiển thị danh sách |
+
+---
+
+### UC9: Xem sản phẩm nổi bật
+
+| **Use case name** | Xem sản phẩm nổi bật |
+|-------------------|---------------------|
+| **Actors** | Khách hàng |
+| **Flow** | **1. Vào trang chủ hoặc click "Nổi bật"**<br>**2. Hệ thống lấy sản phẩm featured**<br>2.1 Truy vấn products WHERE is_featured = true<br>2.2 Load rating và review count<br>2.3 Sắp xếp theo rating hoặc bán chạy<br>**3. Hiển thị sản phẩm nổi bật** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Chưa có sản phẩm featured**<br>Bước: 2, 2.1 | Admin chưa đánh dấu sản phẩm nào là featured<br>→ Trả về danh sách rỗng |
+| **Kịch bản 2: Có sản phẩm featured**<br>Bước: 1, 2.1, 2.2, 2.3, 3 | Có sản phẩm được đánh dấu featured<br>→ Hiển thị danh sách nổi bật |
+
+---
+
+### UC10: Xem sản phẩm mới ra mắt
+
+| **Use case name** | Xem sản phẩm mới ra mắt |
+|-------------------|------------------------|
+| **Actors** | Khách hàng |
+| **Flow** | **1. Click "Mới ra mắt" hoặc "New Arrivals"**<br>**2. Hệ thống lấy sản phẩm mới**<br>2.1 Truy vấn products WHERE is_new_arrival = true<br>2.2 Hoặc lấy theo created_at gần đây nhất<br>2.3 Load thông tin chi tiết<br>**3. Hiển thị danh sách sản phẩm mới** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Chưa có sản phẩm mới**<br>Bước: 2, 2.1, 2.2 | Không có sản phẩm nào được đánh dấu mới<br>→ Trả về danh sách rỗng |
+| **Kịch bản 2: Có sản phẩm mới**<br>Bước: 1, 2.1, 2.2, 2.3, 3 | Có sản phẩm mới trong 30 ngày gần đây<br>→ Hiển thị danh sách |
+
+---
+
+### UC12: Cập nhật sản phẩm (Admin)
+
+| **Use case name** | Cập nhật sản phẩm |
+|-------------------|-------------------|
+| **Actors** | Quản trị viên |
+| **Flow** | **1. Chọn sản phẩm và click "Sửa"**<br>**2. Hệ thống kiểm tra quyền**<br>2.1 Xác thực role = ADMIN<br>2.2 Lấy thông tin sản phẩm hiện tại<br>2.3 Validate dữ liệu mới<br>2.4 Kiểm tra category mới (nếu đổi)<br>2.5 Cập nhật vào database<br>**3. Trả về sản phẩm đã cập nhật** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Không có quyền**<br>Bước: 2, 2.1 | User không phải Admin<br>→ Trả về lỗi 403 Forbidden |
+| **Kịch bản 2: Sản phẩm không tồn tại**<br>Bước: 2.1, 2.2 | Product ID không có trong database<br>→ Trả về lỗi "Product not found" |
+| **Kịch bản 3: Dữ liệu không hợp lệ**<br>Bước: 2.3 | Giá âm hoặc stock quantity âm<br>→ Trả về lỗi validation |
+| **Kịch bản 4: Cập nhật thành công**<br>Bước: 1, 2.1-2.5, 3 | Admin có quyền và dữ liệu hợp lệ<br>→ Cập nhật sản phẩm<br>→ Trả về thông tin mới |
+
+---
+
+### UC13: Xóa sản phẩm (Admin)
+
+| **Use case name** | Xóa sản phẩm |
+|-------------------|--------------|
+| **Actors** | Quản trị viên |
+| **Flow** | **1. Chọn sản phẩm và click "Xóa"**<br>**2. Hệ thống kiểm tra quyền và ràng buộc**<br>2.1 Xác thực role = ADMIN<br>2.2 Kiểm tra sản phẩm có trong đơn hàng nào không<br>2.3 Kiểm tra sản phẩm có trong giỏ hàng không<br>2.4 Xóa các reviews liên quan<br>2.5 Xóa sản phẩm khỏi database<br>**3. Phản hồi xóa thành công** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Không có quyền**<br>Bước: 2, 2.1 | User không phải Admin<br>→ Trả về lỗi 403 Forbidden |
+| **Kịch bản 2: Sản phẩm không tồn tại**<br>Bước: 2.1, 2.2 | Product ID không có trong database<br>→ Trả về lỗi "Product not found" |
+| **Kịch bản 3: Sản phẩm đang có trong đơn hàng**<br>Bước: 2.2 | Có order_items tham chiếu đến sản phẩm<br>→ Không xóa được, chỉ có thể ẩn (set active = false) |
+| **Kịch bản 4: Xóa thành công**<br>Bước: 1, 2.1-2.5, 3 | Không có ràng buộc<br>→ Xóa sản phẩm và các dữ liệu liên quan |
+
+---
+
+## 🛒 Quản lý Giỏ hàng (Tiếp theo)
+
+### UC17: Xóa sản phẩm khỏi giỏ hàng
+
+| **Use case name** | Xóa sản phẩm khỏi giỏ hàng |
+|-------------------|----------------------------|
+| **Actors** | Khách hàng |
+| **Flow** | **1. Click icon "Xóa" bên cạnh sản phẩm**<br>**2. Hệ thống xác nhận và xóa**<br>2.1 Kiểm tra cart_item thuộc về user<br>2.2 Xóa khỏi database<br>2.3 Tính lại tổng tiền giỏ hàng<br>**3. Trả về giỏ hàng đã cập nhật** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Cart item không tồn tại**<br>Bước: 2, 2.1 | ID không có hoặc không thuộc về user<br>→ Trả về lỗi "Cart item not found" |
+| **Kịch bản 2: Xóa thành công**<br>Bước: 1, 2.1, 2.2, 2.3, 3 | Cart item hợp lệ<br>→ Xóa khỏi giỏ<br>→ Cập nhật tổng tiền |
+
+---
+
+### UC18: Xóa toàn bộ giỏ hàng
+
+| **Use case name** | Xóa toàn bộ giỏ hàng |
+|-------------------|---------------------|
+| **Actors** | Khách hàng |
+| **Flow** | **1. Click "Xóa tất cả" hoặc "Clear cart"**<br>**2. Hệ thống xác nhận**<br>2.1 Lấy tất cả cart_items của user<br>2.2 Xóa toàn bộ khỏi database<br>**3. Trả về giỏ hàng rỗng** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Giỏ hàng đã rỗng**<br>Bước: 2, 2.1 | User không có cart items nào<br>→ Không có gì để xóa |
+| **Kịch bản 2: Xóa thành công**<br>Bước: 1, 2.1, 2.2, 3 | Có cart items<br>→ Xóa toàn bộ<br>→ Giỏ hàng về trạng thái rỗng |
+
+---
+
+## 📦 Quản lý Đơn hàng (Tiếp theo)
+
+### UC21: Xem chi tiết đơn hàng
+
+| **Use case name** | Xem chi tiết đơn hàng |
+|-------------------|----------------------|
+| **Actors** | Khách hàng, Quản trị viên |
+| **Flow** | **1. Click vào một đơn hàng**<br>**2. Hệ thống lấy thông tin chi tiết**<br>2.1 Truy vấn order theo ID<br>2.2 Kiểm tra quyền xem (user hoặc admin)<br>2.3 Load order_items với thông tin sản phẩm<br>2.4 Load thông tin user đặt hàng<br>2.5 Tính toán timeline (created, confirmed, shipped, delivered)<br>**3. Hiển thị thông tin đầy đủ** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Đơn hàng không tồn tại**<br>Bước: 2, 2.1 | Order ID không có trong database<br>→ Trả về lỗi "Order not found" |
+| **Kịch bản 2: Không có quyền xem**<br>Bước: 2.1, 2.2 | Đơn hàng không thuộc về user và user không phải Admin<br>→ Trả về lỗi 403 Forbidden |
+| **Kịch bản 3: Xem thành công**<br>Bước: 1, 2.1-2.5, 3 | Có quyền xem<br>→ Hiển thị: items, giá, địa chỉ, trạng thái, timeline |
+
+---
+
+### UC23: Xem tất cả đơn hàng (Admin)
+
+| **Use case name** | Xem tất cả đơn hàng |
+|-------------------|---------------------|
+| **Actors** | Quản trị viên |
+| **Flow** | **1. Vào trang "Quản lý đơn hàng"**<br>**2. Hệ thống kiểm tra quyền Admin**<br>2.1 Xác thực role = ADMIN<br>2.2 Truy vấn tất cả orders<br>2.3 Load thông tin user và order_items<br>2.4 Sắp xếp theo thời gian (mới nhất trước)<br>2.5 Hỗ trợ lọc theo trạng thái<br>**3. Hiển thị danh sách toàn bộ đơn hàng** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Không có quyền**<br>Bước: 2, 2.1 | User không phải Admin<br>→ Trả về lỗi 403 Forbidden |
+| **Kịch bản 2: Chưa có đơn hàng nào**<br>Bước: 2.1, 2.2 | Hệ thống chưa có đơn hàng nào<br>→ Trả về danh sách rỗng |
+| **Kịch bản 3: Xem thành công**<br>Bước: 1, 2.1-2.5, 3 | Admin có quyền<br>→ Hiển thị tất cả đơn hàng với bộ lọc |
+
+---
+
+### UC25: Cập nhật trạng thái thanh toán (Admin)
+
+| **Use case name** | Cập nhật trạng thái thanh toán |
+|-------------------|-------------------------------|
+| **Actors** | Quản trị viên |
+| **Flow** | **1. Chọn đơn hàng và trạng thái thanh toán mới**<br>**2. Hệ thống kiểm tra quyền**<br>2.1 Xác thực role = ADMIN<br>2.2 Lấy thông tin order<br>2.3 Validate trạng thái mới (PENDING, PAID, FAILED)<br>2.4 Cập nhật payment_status<br>2.5 Nếu PAID: Cập nhật paid_at timestamp<br>**3. Trả về order đã cập nhật** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Không có quyền**<br>Bước: 2, 2.1 | User không phải Admin<br>→ Trả về lỗi 403 Forbidden |
+| **Kịch bản 2: Order không tồn tại**<br>Bước: 2.1, 2.2 | Order ID không có trong database<br>→ Trả về lỗi "Order not found" |
+| **Kịch bản 3: Trạng thái không hợp lệ**<br>Bước: 2.3 | Payment status không phải PENDING/PAID/FAILED<br>→ Trả về lỗi validation |
+| **Kịch bản 4: Cập nhật thành công**<br>Bước: 1, 2.1-2.5, 3 | Admin có quyền và dữ liệu hợp lệ<br>→ Cập nhật trạng thái thanh toán |
+
+---
+
+## ⭐ Quản lý Đánh giá (Tiếp theo)
+
+### UC26: Xem đánh giá sản phẩm
+
+| **Use case name** | Xem đánh giá sản phẩm |
+|-------------------|----------------------|
+| **Actors** | Khách hàng, Quản trị viên |
+| **Flow** | **1. Vào trang chi tiết sản phẩm, kéo xuống phần Reviews**<br>**2. Hệ thống lấy danh sách reviews**<br>2.1 Truy vấn reviews WHERE product_id = selected_product<br>2.2 Load thông tin user (tên, ảnh đại diện)<br>2.3 Sắp xếp theo thời gian (mới nhất trước)<br>2.4 Tính % cho từng rating (5 sao, 4 sao...)<br>**3. Hiển thị reviews với rating, comment, user info** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Sản phẩm chưa có review**<br>Bước: 2, 2.1 | Product chưa có review nào<br>→ Trả về danh sách rỗng<br>→ Hiển thị "Chưa có đánh giá" |
+| **Kịch bản 2: Có reviews**<br>Bước: 1, 2.1-2.4, 3 | Sản phẩm có reviews<br>→ Hiển thị danh sách với rating distribution |
+
+---
+
+### UC29: Xóa đánh giá
+
+| **Use case name** | Xóa đánh giá |
+|-------------------|--------------|
+| **Actors** | Khách hàng, Quản trị viên |
+| **Flow** | **1. Click "Xóa" bên cạnh review của mình**<br>**2. Hệ thống kiểm tra quyền**<br>2.1 Lấy review theo ID<br>2.2 Kiểm tra review thuộc về user hoặc user là Admin<br>2.3 Xóa review khỏi database<br>2.4 Tính lại average_rating của product<br>2.5 Giảm review_count của product<br>**3. Phản hồi xóa thành công** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Review không tồn tại**<br>Bước: 2, 2.1 | Review ID không có trong database<br>→ Trả về lỗi "Review not found" |
+| **Kịch bản 2: Không có quyền xóa**<br>Bước: 2.1, 2.2 | Review không thuộc về user và user không phải Admin<br>→ Trả về lỗi 403 Forbidden |
+| **Kịch bản 3: Xóa thành công**<br>Bước: 1, 2.1-2.5, 3 | Có quyền xóa<br>→ Xóa review<br>→ Cập nhật rating của product |
+
+---
+
+## 🏷️ Quản lý Danh mục (Tiếp theo)
+
+### UC30: Xem danh sách danh mục
+
+| **Use case name** | Xem danh sách danh mục |
+|-------------------|------------------------|
+| **Actors** | Khách hàng, Quản trị viên |
+| **Flow** | **1. Click vào menu danh mục hoặc "Categories"**<br>**2. Hệ thống lấy tất cả categories**<br>2.1 Truy vấn tất cả categories<br>2.2 Đếm số lượng sản phẩm trong mỗi category<br>2.3 Sắp xếp theo tên hoặc số sản phẩm<br>**3. Hiển thị danh sách danh mục** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Chưa có danh mục**<br>Bước: 2, 2.1 | Admin chưa tạo category nào<br>→ Trả về danh sách rỗng |
+| **Kịch bản 2: Có danh mục**<br>Bước: 1, 2.1, 2.2, 2.3, 3 | Có categories trong database<br>→ Hiển thị danh sách với số lượng sản phẩm |
+
+---
+
+### UC32: Cập nhật danh mục (Admin)
+
+| **Use case name** | Cập nhật danh mục |
+|-------------------|-------------------|
+| **Actors** | Quản trị viên |
+| **Flow** | **1. Chọn danh mục và click "Sửa"**<br>**2. Hệ thống kiểm tra quyền**<br>2.1 Xác thực role = ADMIN<br>2.2 Lấy thông tin category hiện tại<br>2.3 Validate dữ liệu mới (tên, mô tả)<br>2.4 Kiểm tra tên mới không trùng với category khác<br>2.5 Cập nhật vào database<br>**3. Trả về category đã cập nhật** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Không có quyền**<br>Bước: 2, 2.1 | User không phải Admin<br>→ Trả về lỗi 403 Forbidden |
+| **Kịch bản 2: Category không tồn tại**<br>Bước: 2.1, 2.2 | Category ID không có trong database<br>→ Trả về lỗi "Category not found" |
+| **Kịch bản 3: Tên đã tồn tại**<br>Bước: 2.4 | Tên mới trùng với category khác<br>→ Trả về lỗi "Category name already exists" |
+| **Kịch bản 4: Cập nhật thành công**<br>Bước: 1, 2.1-2.5, 3 | Admin có quyền và dữ liệu hợp lệ<br>→ Cập nhật category |
+
+---
+
+### UC33: Xóa danh mục (Admin)
+
+| **Use case name** | Xóa danh mục |
+|-------------------|--------------|
+| **Actors** | Quản trị viên |
+| **Flow** | **1. Chọn danh mục và click "Xóa"**<br>**2. Hệ thống kiểm tra quyền và ràng buộc**<br>2.1 Xác thực role = ADMIN<br>2.2 Kiểm tra category có sản phẩm không<br>2.3 Nếu có sản phẩm: Không cho xóa hoặc chuyển sản phẩm sang category khác<br>2.4 Nếu không có sản phẩm: Xóa category<br>**3. Phản hồi kết quả** |
+
+| **Kịch bản** | **Mô tả** |
+|--------------|-----------|
+| **Kịch bản 1: Không có quyền**<br>Bước: 2, 2.1 | User không phải Admin<br>→ Trả về lỗi 403 Forbidden |
+| **Kịch bản 2: Category không tồn tại**<br>Bước: 2.1, 2.2 | Category ID không có trong database<br>→ Trả về lỗi "Category not found" |
+| **Kịch bản 3: Category có sản phẩm**<br>Bước: 2.2, 2.3 | Có products thuộc category này<br>→ Trả về lỗi "Cannot delete category with products" |
+| **Kịch bản 4: Xóa thành công**<br>Bước: 1, 2.1, 2.2, 2.4, 3 | Category rỗng (không có sản phẩm)<br>→ Xóa thành công |
+
+---
+
+## 📊 Tổng kết (Cập nhật)
+
+### Thống kê Use Cases đã mô tả chi tiết:
+
+| **Nhóm chức năng** | **Số lượng Use Cases** | **Use Case IDs** |
+|-------------------|----------------------|------------------|
+| Authentication | 3 | UC1, UC2, UC3 |
+| Product Management | 10 | UC4, UC5, UC6, UC7, UC8, UC9, UC10, UC11, UC12, UC13 |
+| Cart Management | 5 | UC14, UC15, UC16, UC17, UC18 |
+| Order Management | 7 | UC19, UC20, UC21, UC22, UC23, UC24, UC25 |
+| Review Management | 4 | UC26, UC27, UC28, UC29 |
+| Category Management | 4 | UC30, UC31, UC32, UC33 |
+| Notification System | 3 | UC34, UC35, UC36 |
+| **TỔNG** | **36** | **36/36 Use Cases** ✅ |
 
 ---
 
 ## 📝 Ghi chú
 
-- ✅ Mỗi use case được mô tả theo định dạng bảng chuẩn
-- ✅ Có flow chi tiết từng bước
-- ✅ Có các kịch bản (normal flow và alternative flows)
-- ✅ Bao gồm điều kiện tiên quyết và kết quả
-- ✅ Phù hợp với implementation trong code
-
-**15 Use Cases còn lại (UC7-10, UC12-13, UC17-18, UC21, UC23, UC25-26, UC29-30, UC32-33) có flow tương tự và có thể mở rộng theo mẫu trên.**
+- ✅ **TẤT CẢ 36 Use Cases** đã được mô tả chi tiết
+- ✅ Mỗi use case có định dạng bảng chuẩn
+- ✅ Flow chi tiết với các bước phân cấp (1, 2, 2.1, 2.2...)
+- ✅ Kịch bản đầy đủ: Alternative flows và Normal flow
+- ✅ Bao gồm điều kiện tiên quyết, quyền hạn và kết quả
+- ✅ Phù hợp 100% với implementation trong code Spring Boot
+- ✅ Áp dụng SOLID principles và Design Patterns
 
 ---
 
-**🎯 Tài liệu này dùng cho báo cáo môn TKPM - Đầy đủ và chi tiết theo format chuẩn!**
+## 🎯 Use Cases theo độ phức tạp
+
+### 🔴 **Phức tạp cao (5 bước trở lên):**
+- UC19: Tạo đơn hàng (9 bước)
+- UC15: Thêm sản phẩm vào giỏ (7 bước)
+- UC11: Thêm sản phẩm mới (5 bước)
+- UC24: Cập nhật trạng thái đơn hàng (6 bước)
+
+### 🟡 **Phức tạp trung bình (3-4 bước):**
+- UC1, UC2: Authentication
+- UC27, UC28: Quản lý review
+- UC12, UC13: Cập nhật/Xóa sản phẩm
+
+### 🟢 **Phức tạp thấp (2-3 bước):**
+- UC4, UC5: Xem sản phẩm
+- UC14: Xem giỏ hàng
+- UC26: Xem reviews
+- UC30: Xem categories
+
+---
+
+**🎯 Tài liệu hoàn chỉnh cho báo cáo môn TKPM - 36/36 Use Cases với format chuẩn!** 📚✨
