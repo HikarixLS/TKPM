@@ -1,6 +1,13 @@
 # 📊 Use Case Diagram - AppleStore Backend
 
-## Sơ đồ Use Case
+## 📁 Files
+
+- **PlantUML Version**: Xem code PlantUML bên dưới
+- **Draw.io Version**: Mở file [`USE_CASE_DIAGRAM.drawio`](./USE_CASE_DIAGRAM.drawio) bằng [Draw.io](https://app.diagrams.net/) hoặc VS Code extension
+
+---
+
+## Sơ đồ Use Case (PlantUML)
 
 ```plantuml
 @startuml AppleStore Use Case Diagram
@@ -316,19 +323,39 @@ UC8 ..> UC4 : <<extend>>
 
 ---
 
-## 🎨 Cách xem sơ đồ PlantUML
+## 🎨 Cách xem sơ đồ
 
-### Option 1: VS Code Extension
+### **Cách 1: Draw.io (Khuyến nghị) ⭐**
+
+#### **Online:**
+1. Truy cập: https://app.diagrams.net/
+2. Click **"Open Existing Diagram"**
+3. Chọn file `USE_CASE_DIAGRAM.drawio`
+4. Hoặc kéo thả file vào trang web
+
+#### **VS Code:**
+1. Cài extension: **Draw.io Integration** (hediet.vscode-drawio)
+2. Mở file `USE_CASE_DIAGRAM.drawio` trong VS Code
+3. Tự động hiện sơ đồ để xem và chỉnh sửa
+
+#### **Desktop App:**
+1. Tải Draw.io Desktop: https://github.com/jgraph/drawio-desktop/releases
+2. Mở file `USE_CASE_DIAGRAM.drawio`
+
+### **Cách 2: PlantUML**
+
+#### **Trong VS Code:**
+#### **Trong VS Code:**
 1. Cài extension: **PlantUML** (jebbs.plantuml)
 2. Mở file này
 3. Nhấn `Alt + D` để xem preview
 
-### Option 2: Online
+#### **Online:**
 1. Copy code PlantUML
 2. Truy cập: https://www.plantuml.com/plantuml/uml/
 3. Paste và xem kết quả
 
-### Option 3: IntelliJ IDEA
+#### **IntelliJ IDEA:**
 1. Cài plugin: **PlantUML Integration**
 2. Mở file và xem preview
 
