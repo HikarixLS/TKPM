@@ -86,7 +86,7 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="view-msg7" value="Convert to DTOs&#xa;(ModelMapper)" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;dashed=1;" edge="1" parent="1">
+        <mxCell id="view-msg7" value="Convert to DTOs&amp;#xa;(ModelMapper)" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;dashed=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="670" y="550" as="sourcePoint" />
             <mxPoint x="670" y="580" as="targetPoint" />
@@ -105,7 +105,7 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="view-msg9" value="200 OK&#xa;List&lt;ProductDTO&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="view-ctrl" target="view-client">
+        <mxCell id="view-msg9" value="200 OK&amp;#xa;List&amp;lt;ProductDTO&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="view-ctrl" target="view-client">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="280" y="640" />
@@ -164,7 +164,7 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="search-msg4" value="SELECT * FROM products&#xa;WHERE name LIKE '%iPhone%'&#xa;OR description LIKE '%iPhone%'" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;" edge="1" parent="1" source="search-repo" target="search-db">
+        <mxCell id="search-msg4" value="SELECT * FROM products&amp;#xa;WHERE name LIKE '%iPhone%'&amp;#xa;OR description LIKE '%iPhone%'" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;" edge="1" parent="1" source="search-repo" target="search-db">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1060" y="980" />
@@ -196,7 +196,7 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="search-msg8" value="200 OK&#xa;List&lt;ProductDTO&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="search-ctrl" target="search-client">
+        <mxCell id="search-msg8" value="200 OK&amp;#xa;List&amp;lt;ProductDTO&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="search-ctrl" target="search-client">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="280" y="1130" />
@@ -239,7 +239,7 @@
         </mxCell>
         
         <!-- Create Product Messages -->
-        <mxCell id="create-msg1" value="POST /api/products&#xa;Authorization: Bearer &lt;token&gt;&#xa;{name, price, categoryId, ...}" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;" edge="1" parent="1" source="create-admin" target="create-jwt">
+        <mxCell id="create-msg1" value="POST /api/products&amp;#xa;Authorization: Bearer &amp;lt;token&amp;gt;&amp;#xa;{name, price, categoryId, ...}" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;" edge="1" parent="1" source="create-admin" target="create-jwt">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="230" y="1400" />
@@ -247,7 +247,7 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="create-msg2" value="Validate JWT &amp;amp;&#xa;Check ADMIN role" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;dashed=1;" edge="1" parent="1">
+        <mxCell id="create-msg2" value="Validate JWT &amp;amp;&amp;#xa;Check ADMIN role" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;dashed=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="340" y="1440" as="sourcePoint" />
             <mxPoint x="340" y="1480" as="targetPoint" />
@@ -258,7 +258,7 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="create-msg3" value="@PreAuthorize&#xa;passed" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;" edge="1" parent="1" source="create-jwt" target="create-ctrl">
+        <mxCell id="create-msg3" value="@PreAuthorize&amp;#xa;passed" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;" edge="1" parent="1" source="create-jwt" target="create-ctrl">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="430" y="1510" />
@@ -290,7 +290,7 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="create-msg7" value="Create Product entity&#xa;Set category" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;dashed=1;" edge="1" parent="1">
+        <mxCell id="create-msg7" value="Create Product entity&amp;#xa;Set category" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;dashed=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="770" y="1630" as="sourcePoint" />
             <mxPoint x="770" y="1670" as="targetPoint" />
@@ -341,7 +341,7 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="create-msg13" value="201 Created&#xa;ProductDTO" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="create-ctrl" target="create-admin">
+        <mxCell id="create-msg13" value="201 Created&amp;#xa;ProductDTO" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="create-ctrl" target="create-admin">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="300" y="1850" />
@@ -376,7 +376,7 @@
         </mxCell>
         
         <!-- Update Product Messages -->
-        <mxCell id="update-msg1" value="PUT /api/products/{id}&#xa;{name, price, stockQuantity, ...}" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;" edge="1" parent="1" source="update-admin" target="update-ctrl">
+        <mxCell id="update-msg1" value="PUT /api/products/{id}&amp;#xa;{name, price, stockQuantity, ...}" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;" edge="1" parent="1" source="update-admin" target="update-ctrl">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="270" y="2060" />
@@ -408,7 +408,7 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="update-msg5" value="Update product fields&#xa;(name, price, stock, etc.)" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;dashed=1;" edge="1" parent="1">
+        <mxCell id="update-msg5" value="Update product fields&amp;#xa;(name, price, stock, etc.)" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;dashed=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="650" y="2180" as="sourcePoint" />
             <mxPoint x="650" y="2220" as="targetPoint" />
@@ -459,7 +459,7 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="update-msg11" value="200 OK&#xa;ProductDTO" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="update-ctrl" target="update-admin">
+        <mxCell id="update-msg11" value="200 OK&amp;#xa;ProductDTO" style="edgeStyle=orthogonalEdgeStyle;html=1;align=left;spacingLeft=2;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="1" source="update-ctrl" target="update-admin">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="270" y="2400" />
