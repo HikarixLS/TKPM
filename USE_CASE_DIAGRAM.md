@@ -1,151 +1,32 @@
 # 📊 Use Case Diagram - AppleStore Backend
 
-## 📁 Files
+## 📁 Xem sơ đồ
 
-- **PlantUML Version**: Xem code PlantUML bên dưới
-- **Draw.io Version**: Mở file [`USE_CASE_DIAGRAM.drawio`](./USE_CASE_DIAGRAM.drawio) bằng [Draw.io](https://app.diagrams.net/) hoặc VS Code extension
+**Mở file [`USE_CASE_DIAGRAM.drawio`](./USE_CASE_DIAGRAM.drawio)** bằng:
+- 🌐 [Draw.io Online](https://app.diagrams.net/)
+- 💻 VS Code với extension **Draw.io Integration**
+- 🖥️ [Draw.io Desktop App](https://github.com/jgraph/drawio-desktop/releases)
 
 ---
 
-## Sơ đồ Use Case (PlantUML)
+## 🎨 Hướng dẫn mở sơ đồ
 
-```plantuml
-@startuml AppleStore Use Case Diagram
+### **Cách 1: Online (Khuyến nghị) ⭐**
+1. Truy cập: https://app.diagrams.net/
+2. Click **"Open Existing Diagram"**
+3. Chọn file `USE_CASE_DIAGRAM.drawio`
+4. Hoặc kéo thả file vào browser
 
-left to right direction
-skinparam packageStyle rectangle
+### **Cách 2: VS Code**
+1. Cài extension: **Draw.io Integration** (hediet.vscode-drawio)
+2. Mở file `USE_CASE_DIAGRAM.drawio`
+3. Tự động hiển thị sơ đồ
 
-actor "Khách hàng\n(Customer)" as Customer
-actor "Quản trị viên\n(Admin)" as Admin
-actor "Hệ thống Email" as EmailSystem
+### **Cách 3: Desktop App**
+1. Tải Draw.io Desktop: https://github.com/jgraph/drawio-desktop/releases
+2. Mở file `USE_CASE_DIAGRAM.drawio`
 
-rectangle "AppleStore Backend System" {
-  
-  package "Authentication & Authorization" {
-    usecase "Đăng ký tài khoản" as UC1
-    usecase "Đăng nhập" as UC2
-    usecase "Xem thông tin cá nhân" as UC3
-  }
-  
-  package "Quản lý Sản phẩm" {
-    usecase "Xem danh sách sản phẩm" as UC4
-    usecase "Xem chi tiết sản phẩm" as UC5
-    usecase "Tìm kiếm sản phẩm" as UC6
-    usecase "Lọc sản phẩm theo màu sắc" as UC7
-    usecase "Lọc sản phẩm theo dung lượng" as UC8
-    usecase "Xem sản phẩm nổi bật" as UC9
-    usecase "Xem sản phẩm mới" as UC10
-    usecase "Thêm sản phẩm mới" as UC11
-    usecase "Cập nhật sản phẩm" as UC12
-    usecase "Xóa sản phẩm" as UC13
-  }
-  
-  package "Quản lý Giỏ hàng" {
-    usecase "Xem giỏ hàng" as UC14
-    usecase "Thêm sản phẩm vào giỏ" as UC15
-    usecase "Cập nhật số lượng" as UC16
-    usecase "Xóa sản phẩm khỏi giỏ" as UC17
-    usecase "Xóa toàn bộ giỏ hàng" as UC18
-  }
-  
-  package "Quản lý Đơn hàng" {
-    usecase "Tạo đơn hàng" as UC19
-    usecase "Xem đơn hàng của tôi" as UC20
-    usecase "Xem chi tiết đơn hàng" as UC21
-    usecase "Hủy đơn hàng" as UC22
-    usecase "Xem tất cả đơn hàng" as UC23
-    usecase "Cập nhật trạng thái đơn hàng" as UC24
-    usecase "Cập nhật trạng thái thanh toán" as UC25
-  }
-  
-  package "Quản lý Đánh giá" {
-    usecase "Xem đánh giá sản phẩm" as UC26
-    usecase "Viết đánh giá" as UC27
-    usecase "Cập nhật đánh giá" as UC28
-    usecase "Xóa đánh giá" as UC29
-  }
-  
-  package "Quản lý Danh mục" {
-    usecase "Xem danh sách danh mục" as UC30
-    usecase "Thêm danh mục" as UC31
-    usecase "Cập nhật danh mục" as UC32
-    usecase "Xóa danh mục" as UC33
-  }
-  
-  package "Hệ thống Thông báo" {
-    usecase "Gửi email xác nhận đơn hàng" as UC34
-    usecase "Gửi email thông báo ship hàng" as UC35
-    usecase "Cảnh báo hết hàng tồn kho" as UC36
-  }
-}
-
-' Customer relationships
-Customer --> UC1
-Customer --> UC2
-Customer --> UC3
-Customer --> UC4
-Customer --> UC5
-Customer --> UC6
-Customer --> UC7
-Customer --> UC8
-Customer --> UC9
-Customer --> UC10
-
-Customer --> UC14
-Customer --> UC15
-Customer --> UC16
-Customer --> UC17
-Customer --> UC18
-
-Customer --> UC19
-Customer --> UC20
-Customer --> UC21
-Customer --> UC22
-
-Customer --> UC26
-Customer --> UC27
-Customer --> UC28
-Customer --> UC29
-
-Customer --> UC30
-
-' Admin relationships
-Admin --> UC2
-Admin --> UC3
-Admin --> UC4
-Admin --> UC5
-Admin --> UC6
-
-Admin --> UC11
-Admin --> UC12
-Admin --> UC13
-
-Admin --> UC23
-Admin --> UC24
-Admin --> UC25
-
-Admin --> UC30
-Admin --> UC31
-Admin --> UC32
-Admin --> UC33
-
-' System relationships
-UC19 ..> UC34 : <<include>>
-UC24 ..> UC35 : <<include>>
-UC19 ..> UC36 : <<include>>
-
-UC34 --> EmailSystem
-UC35 --> EmailSystem
-UC36 --> EmailSystem
-
-' Extension relationships
-UC19 ..> UC14 : <<extend>>
-UC6 ..> UC4 : <<extend>>
-UC7 ..> UC4 : <<extend>>
-UC8 ..> UC4 : <<extend>>
-
-@enduml
-```
+---
 
 ## Mô tả chi tiết các Use Case
 
@@ -331,34 +212,7 @@ UC8 ..> UC4 : <<extend>>
 1. Truy cập: https://app.diagrams.net/
 2. Click **"Open Existing Diagram"**
 3. Chọn file `USE_CASE_DIAGRAM.drawio`
-4. Hoặc kéo thả file vào trang web
-
-#### **VS Code:**
-1. Cài extension: **Draw.io Integration** (hediet.vscode-drawio)
-2. Mở file `USE_CASE_DIAGRAM.drawio` trong VS Code
-3. Tự động hiện sơ đồ để xem và chỉnh sửa
-
-#### **Desktop App:**
-1. Tải Draw.io Desktop: https://github.com/jgraph/drawio-desktop/releases
-2. Mở file `USE_CASE_DIAGRAM.drawio`
-
-### **Cách 2: PlantUML**
-
-#### **Trong VS Code:**
-#### **Trong VS Code:**
-1. Cài extension: **PlantUML** (jebbs.plantuml)
-2. Mở file này
-3. Nhấn `Alt + D` để xem preview
-
-#### **Online:**
-1. Copy code PlantUML
-2. Truy cập: https://www.plantuml.com/plantuml/uml/
-3. Paste và xem kết quả
-
-#### **IntelliJ IDEA:**
-1. Cài plugin: **PlantUML Integration**
-2. Mở file và xem preview
-
 ---
 
-**🎯 Use Case Diagram này thể hiện đầy đủ các chức năng của AppleStore Backend API với 2 actors chính (Customer & Admin) và 36 use cases!**
+**🎯 Use Case Diagram này thể hiện đầy đủ các chức năng của AppleStore Backend API với 3 actors chính (Customer, Admin & Email System) và 36 use cases!**
+
